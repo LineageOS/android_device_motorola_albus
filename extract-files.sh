@@ -60,7 +60,9 @@ function blob_fixup() {
 
     # Load wrapped shim
     vendor/lib64/libmdmcutback.so)
-        "${PATCHELF}" --add-needed "libqsap_shim.so" "${2}"
+        for LIBQSAP_SHIM in $(grep -L "libqsapshim.so" "${2}"); do
+            "${PATCHELF}" --add-needed "libqsapshim.so" "$LIBQSAP_SHIM"
+        done
         ;;
 
     # Fix thermal engine config path
