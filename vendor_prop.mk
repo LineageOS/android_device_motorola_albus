@@ -192,6 +192,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.amd=false \
     ro.vendor.sensors.pmd=false \
     ro.vendor.sensors.rmd=false \
+    ro.vendor.sensors.smd=false \
     ro.vendor.sdk.sensors.gestures=false \
     ro.vendor.sensors.facing=false \
     ro.vendor.sensors.scrn_ortn=false \
