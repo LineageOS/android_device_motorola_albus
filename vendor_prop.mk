@@ -51,7 +51,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     bluetooth.hfp.client=1 \
     ro.qualcomm.bt.hci_transport=smd \
     persist.vendor.qcom.bluetooth.enable.splita2dp=false
-    
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=1 \
@@ -232,9 +232,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Fast App Launch
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.device_config.runtime_native.usap_pool_enabled=true \
-    ro.control_privapp_permissions=log
-    
+    persist.device_config.runtime_native.usap_pool_enabled=true
+
 # DRM
 PRODUCT_PROPERTY_OVERRIDES += \
     drm.service.enabled = true
