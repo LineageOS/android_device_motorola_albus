@@ -73,14 +73,20 @@ function blob_fixup() {
         sed -i "s|/system/etc/camera/|/vendor/etc/camera/|g" "${2}"
         ;;
 
-    vendor/lib/libmmcamera_vstab_module.so | vendor/lib/libmmcamera2_stats_modules.so)
+    vendor/lib/libmmcamera_vstab_module.so)
         patchelf --remove-needed libandroid.so "${2}"
-        ;;
-
-    vendor/lib/lib_mottof.so | vendor/lib/libmmcamera_vstab_module.so | vendor/lib/libjscore.so | vendor/lib/libmmcamera_ppeiscore.so | vendor/lib/libmmcamera2_stats_modules.so)
         sed -i "s/libgui/libwui/" "${2}"
         ;;
-            
+
+    vendor/lib/libmmcamera2_stats_modules.so)
+        patchelf --remove-needed libandroid.so "${2}"
+        sed -i "s/libgui/libwui/" "${2}"
+        ;;
+
+    vendor/lib/lib_mottof.so | vendor/lib/libjscore.so | vendor/lib/libmmcamera_ppeiscore.so)
+        sed -i "s/libgui/libwui/" "${2}"
+        ;;
+
     vendor/lib/libcamerabgprocservice.so)
         patchelf --remove-needed libcamera_client.so "${2}"
         ;;
