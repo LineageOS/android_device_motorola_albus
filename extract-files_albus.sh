@@ -63,7 +63,7 @@ fi
 
 function blob_fixup() {
     case "${1}" in
-         
+
     # Fix fingerprint UHID
     vendor/etc/init/android.hardware.biometrics.fingerprint@2.1-service.rc)
         sed -i 's/group system input 9015/group system uhid input 9015/' "${2}"
@@ -73,18 +73,24 @@ function blob_fixup() {
         sed -i "s|/system/etc/camera/|/vendor/etc/camera/|g" "${2}"
         ;;
 
-    vendor/lib/libmmcamera_vstab_module.so | vendor/lib/libmmcamera2_stats_modules.so)
+    vendor/lib/libmmcamera_vstab_module.so)
         patchelf --remove-needed libandroid.so "${2}"
-        ;;
-
-    vendor/lib/lib_mottof.so | vendor/lib/libmmcamera_vstab_module.so | vendor/lib/libjscore.so | vendor/lib/libmmcamera_ppeiscore.so | vendor/lib/libmmcamera2_stats_modules.so)
         sed -i "s/libgui/libwui/" "${2}"
         ;;
-            
+
+    vendor/lib/libmmcamera2_stats_modules.so)
+        patchelf --remove-needed libandroid.so "${2}"
+        sed -i "s/libgui/libwui/" "${2}"
+        ;;
+
+    vendor/lib/lib_mottof.so | vendor/lib/libjscore.so | vendor/lib/libmmcamera_ppeiscore.so)
+        sed -i "s/libgui/libwui/" "${2}"
+        ;;
+
     vendor/lib/libcamerabgprocservice.so)
         patchelf --remove-needed libcamera_client.so "${2}"
         ;;
-    
+
     # Patch libcutils dep into audio HAL
     vendor/lib/hw/audio.primary.msm8953.so)
         patchelf --replace-needed "libcutils.so" "libprocessgroup.so" "${2}"
