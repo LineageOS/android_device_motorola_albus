@@ -517,7 +517,6 @@ vendor/lib/libchromatix_s5k4h8_zsl_preview_3a.so
 vendor/lib/libchromatix_s5k4h8_zsl_video_3a.so
 
 # DTV
--vendor/app/DTVPlayer/DTVPlayer.apk
 -vendor/app/DTVService/DTVService.apk
 vendor/etc/permissions/com.motorola.hardware.dtv.xml
 vendor/etc/permissions/mot_dtv_permissions.xml
