@@ -62,11 +62,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.charger.enable_suspend=true
 
-## Codec2 switch
-PRODUCT_PROPERTY_OVERRIDES += \
-    debug.media.codec2=2
-
-## CNE
+# CNE
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cnd.iwlan=1 \
     persist.vendor.cne.logging.qxdm=3974
@@ -74,16 +70,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.cne.feature=1
 
+# Codec2 switch
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.media.codec2=2
+
 # core_ctrl
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.qti.core_ctl_min_cpu=2 \
     ro.vendor.qti.core_ctl_max_cpu=4
-
-# Debug
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dbg.volte_avail_ovr=1 \
-    persist.dbg.vt_avail_ovr=1 \
-    persist.dbg.wfc_avail_ovr=1
 
 # Dex2oat
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -108,19 +102,29 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.recomputecrop=0 \
     ro.opengles.version=196610 \
     ro.qualcomm.cabl=0
-    
+
+# DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # FM
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     vendor.bluetooth.soc=smd \
     ro.vendor.fm.use_audio_session=true
-	
-# Mods
+
+# IMS
 PRODUCT_PROPERTY_OVERRIDES += \
-    sys.mod.platformsdkversion=281
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1
 
 # Media
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     media.stagefright.thumbnail.prefer_hw_codecs=true
+
+# Mods
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.mod.platformsdkversion=281
 
 # OMX
 # Rank OMX SW codecs lower than OMX HW codecs
@@ -229,7 +233,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.usb.bpt_adb=2ee6 \
     ro.usb.bpteth=2ee7 \
     ro.usb.bpteth_adb=2ee8
-
-# DRM
-PRODUCT_PROPERTY_OVERRIDES += \
-    drm.service.enabled = true
