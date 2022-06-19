@@ -1,6 +1,6 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (C) 2017-2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,35 +15,26 @@
 # limitations under the License.
 
 
-# Inherit from those products. Most specific first.
+# Inherit from device product
 $(call inherit-product, device/motorola/albus/full_albus.mk)
 
-
-# Inherit from those products. Most specific first.
+# Inherit from core products - Most specific first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_n_mr1.mk)
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk) 
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Boot animation
+# Boot Animation
 TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_BOOTANIMATION_HALF_RES := true
 
-## Device identifier. This must come after all inclusions
+## Device identifier - This must come after all inclusions
 PRODUCT_DEVICE := albus
-PRODUCT_NAME := lineage_albus
 PRODUCT_BRAND := Motorola
-PRODUCT_MODEL := Moto Z2 Play
 PRODUCT_MANUFACTURER := Motorola
-PRODUCT_RELEASE_NAME := albus
+PRODUCT_MODEL := Moto Z Play
+PRODUCT_NAME := lineage_albus
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
-PRODUCT_ENFORCE_RRO_TARGETS := \
-    framework-res
-
 BUILD_FINGERPRINT := "motorola/albus_retail/albus:9/PPS29.133-30/ab8b4:user/release-keys"
-
-    # for specific
-$(call inherit-product, vendor/motorola/albus/albus-vendor.mk)
